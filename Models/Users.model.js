@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-
 // CREATING MONGOOSE SCHEMA
 // SCHEMA IS THE BLUEPRINT OF THE DATA THAT WE NEED TO STORE
 const UsersSchema = new Schema({
