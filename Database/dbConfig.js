@@ -1,12 +1,15 @@
 const mongoose = require("mongoose");
-const BASE_URL = "mongodb://localhost:27017/";
-const DATABASE_NAME = "Bookudu";
+const BASE_URL =
+  process.env.NODE_ENVIRONMENT === "development"
+    ? `mongodb://localhost:27017/${process.env.DEVELOPMENT_MONGO_DB_NAME}`
+    : `mongodb+srv://${process.env.PRODUCTION_MONGO_DB_USER_NAME}:${process.env.PRODUCTION_MONGO_DB_PASSWORD}@bookududb.rubs5wb 
+    .mongodb.net/${process.env.PRODUCTION_MONGO_DB_NAME}?retryWrites=true&w=majority&appName=BookuduDB`;
 
 mongoose
-  .connect(`${BASE_URL}${DATABASE_NAME}`)
+  .connect(BASE_URL)
   .then((response) => {
     if (response) {
-      console.log("DATABASE CONNECTION SUCCESSFULL");
+      console.log("DATABASE CONNECTION SUCCESSFUL");
     } else {
       console.log("SOMETHING WENT WRONG");
     }

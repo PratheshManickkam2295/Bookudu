@@ -5,6 +5,11 @@ const HTTP_SERVER = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
+console.log(process.env);
+// ENABLING ENVIRONMENT VARIABLE CONFIGS:
+require("dotenv").config()
+console.log(process.env);
+
 // CORS CONFIGURATION
 // HTTP_SERVER.use(cors());
 

@@ -1,5 +1,10 @@
 const UserRouter = require("express").Router();
 const UserModel = require("../Models/Users.model");
+var mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const myPlaintextPassword = 's0/\/\P4$$w0rD';
+const someOtherPlaintextPassword = 'not_bacon';
 
 // GET ALL THE USERS
 /**
@@ -42,6 +47,8 @@ UserRouter.get("/", (req, res, next) => {
 UserRouter.post("/create", (req, res, next) => {
   const data = req.body;
   const User = new UserModel(data);
+  const myPlaintextPassword = 's0/\/\P4$$w0rD';
+  const someOtherPlaintextPassword = 'not_bacon';
   User.save()
     .then((result) => {
       console.log(result);
